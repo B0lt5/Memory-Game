@@ -1,0 +1,337 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ffffff; /* Reverted to original background color */
+  margin: 0px;
+  padding: 20px 60px; 
+  /* Removed background-image, background-size, background-repeat, background-attachment */
+  color: #333; /* Reverted to original text color */
+}
+
+h1 {
+  color: #004E89; /* Reverted to original h1 color */
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 50px;
+  font-weight: 400;
+  margin: 0;
+  text-align: center;
+}
+
+h2 {
+  color: #AAA; /* Reverted to original h2 color */
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 16px;
+  font-weight: 100;
+  letter-spacing: 2px;
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+p {
+  color: #333; /* Reverted to original p color */
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 20px;
+  font-weight: 100;
+  margin: 0;
+  text-align: center;
+}
+
+.actions {
+  text-align: center;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Space between score and button */
+}
+
+.actions a {
+  background-color: #9DD1F1;
+  border-radius: 3px;
+  color: #004E89;
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  display: inline-block;
+  margin: 10px;
+  padding: 12px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+#score-counter {
+  color: #004E89;
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+#gameboard {
+  position: relative;
+  text-align: center;
+  top: 10px; /* Reduced top positioning */
+  min-height: 400px; /* Ensure gameboard has a minimum height */
+  max-width: none; /* Removed max-width to allow for 8 cards per row */
+  width: 1264px;
+  margin: 0 auto; /* Removed auto margin */
+}
+
+.card {
+  border: 2px solid #9DD1F1;
+  display: inline-block;
+  height: 240px; /* Reverted height for 8x3 layout */
+  margin: 4px; 
+  text-align: center;
+  width: 150px; /* Reverted width for 8x3 layout */
+  cursor: pointer; /* Add cursor pointer to indicate interactivity */
+  perspective: 1000px; /* For 3D flip effect */
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-front {
+  background-color: #fff;
+  color: black;
+  transform: rotateY(180deg);
+}
+
+.card-back {
+  color: white;
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.card img {
+  max-width: 100%; /* Ensure image takes full width of its container */
+  max-height: 100%; /* Ensure image takes full height of its container */
+  width: 100%; /* Explicitly set width to 100% */
+  height: 100%; /* Explicitly set height to 100% */
+  object-fit: contain; /* Maintain aspect ratio and fit within container */
+  padding: 0; 
+}
+
+.card-back img {
+  width: 100%; /* Explicitly set width to 100% */
+  height: 100%; /* Explicitly set height to 100% */
+  object-fit: cover; /* Changed to cover to ensure image fills the entire card back */
+}
+
+.theme-switch {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.theme-switch input[type="checkbox"] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.theme-switch label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 80px;
+  height: 40px;
+  background: #004E89;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+  margin-left: 10px;
+}
+
+.theme-switch label:after {
+  content: '';
+  position: absolute;
+  top: 2.5px;
+  left: 2.5px;
+  width: 35px;
+  height: 35px;
+  background: #fff url('./images/moon.svg') no-repeat center center;
+  background-size: 70%;
+  border-radius: 90px;
+  transition: 0.3s;
+}
+
+.theme-switch input:checked + label {
+  background: #9DD1F1;
+}
+
+.theme-switch input:checked + label:after {
+  left: calc(100% - 2.5px);
+  transform: translateX(-100%);
+  background: #fff url('./images/sun.png') no-repeat center center;
+  background-size: 70%;
+}
+
+body.dark-mode {
+  background-color: #333; /* Reverted to original dark mode background color */
+  color: #eee; /* Reverted to original dark mode text color */
+  /* Removed background-image, background-size, background-repeat, background-attachment */
+}
+
+body.dark-mode h1 {
+  color: #9DD1F1; /* Reverted to original dark mode h1 color */
+}
+
+body.dark-mode h2 {
+  color: #bbb; /* Reverted to original dark mode h2 color */
+}
+
+body.dark-mode p {
+  color: #ccc; /* Reverted to original dark mode p color */
+}
+
+body.dark-mode .actions a {
+  background-color: #004E89;
+  color: #9DD1F1;
+}
+
+body.dark-mode #score-counter {
+  color: #9DD1F1;
+}
+
+body.dark-mode .card {
+  border-color: #004E89;
+}
+
+body.dark-mode .card:hover {
+  background-color: #9DD1F1;
+  border-color: #9DD1F1;
+}
+
+body.dark-mode .card-back {
+  color: #eee;
+}
+
+body.dark-mode .popup p {
+  color: #333; /* Set a visible color for pop-up text in dark mode */
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 300px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popup p {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 15px; /* Add some space below the paragraph */
+}
+
+.popup button {
+  background-color: #9DD1F1;
+  border-radius: 3px;
+  color: #073253;
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  padding: 12px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+}
+
+.popup button:hover {
+  background-color: #004E89;
+  color: #9DD1F1;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.page.hidden {
+  display: none;
+}
+
+#start-page button {
+  background-color: #004E89;
+  border-radius: 3px;
+  color: #fff;
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+#start-page button:hover {
+  background-color: #9DD1F1;
+  color: #004E89;
+}
+
+body.dark-mode #start-page button {
+  background-color: #9DD1F1;
+  color: #004E89;
+}
+
+body.dark-mode #start-page button:hover {
+  background-color: #004E89;
+  color: #9DD1F1;
+}
