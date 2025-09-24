@@ -5,7 +5,7 @@
 body {
   background-color: #ffffff;
   margin: 0;
-  padding: 20px 20px; 
+  padding: 20px 20px;
   color: #333;
 }
 
@@ -72,23 +72,24 @@ p {
 
 #gameboard {
   position: relative;
-  text-align: center;
   top: 10px;
-  width: 100%; /* Changed from 1264px to 100% */
+  width: 100%;
   margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap; /* Allows cards to wrap to the next row */
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr); /* 8 columns */
+  grid-template-rows: repeat(3, 1fr); /* 3 rows */
   gap: 8px;
+  max-width: 1264px; /* Optional: Keep the original max width for large screens */
 }
 
 .card {
   border: 2px solid #9DD1F1;
-  display: inline-block;
-  height: clamp(80px, 15vw, 200px);
-  margin: 4px;
-  text-align: center;
-  width: clamp(80px, 15vw, 150px);
+  display: flex; /* Changed from inline-block to flex */
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 150 / 240; /* Maintain original aspect ratio */
+  width: auto; /* Let the grid handle the width */
+  height: auto; /* Let the grid handle the height */
   cursor: pointer;
   perspective: 1000px;
 }
@@ -335,29 +336,4 @@ body.dark-mode #start-page button {
 body.dark-mode #start-page button:hover {
   background-color: #004E89;
   color: #9DD1F1;
-}
-
-/* New responsive styles */
-@media (max-width: 1200px) {
-  body {
-    padding: 20px 10px;
-  }
-}
-
-@media (max-width: 768px) {
-  .actions {
-    flex-direction: column;
-    gap: 10px;
-  }
-  .card {
-    width: clamp(60px, 20vw, 100px);
-    height: clamp(80px, 30vw, 150px);
-  }
-}
-
-@media (max-width: 600px) {
-  .card {
-    width: clamp(50px, 25vw, 90px);
-    height: clamp(70px, 35vw, 130px);
-  }
 }
