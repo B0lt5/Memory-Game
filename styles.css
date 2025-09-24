@@ -3,26 +3,25 @@
 }
 
 body {
-  background-color: #ffffff; /* Reverted to original background color */
-  margin: 0px;
-  padding: 20px 60px; 
-  /* Removed background-image, background-size, background-repeat, background-attachment */
-  color: #333; /* Reverted to original text color */
+  background-color: #ffffff;
+  margin: 0;
+  padding: 20px 20px; 
+  color: #333;
 }
 
 h1 {
-  color: #004E89; /* Reverted to original h1 color */
+  color: #004E89;
   font-family: 'Yantramanav', sans-serif;
-  font-size: 50px;
+  font-size: clamp(30px, 5vw, 50px);
   font-weight: 400;
   margin: 0;
   text-align: center;
 }
 
 h2 {
-  color: #AAA; /* Reverted to original h2 color */
+  color: #AAA;
   font-family: 'Yantramanav', sans-serif;
-  font-size: 16px;
+  font-size: clamp(14px, 2vw, 16px);
   font-weight: 100;
   letter-spacing: 2px;
   margin: 0;
@@ -31,9 +30,9 @@ h2 {
 }
 
 p {
-  color: #333; /* Reverted to original p color */
+  color: #333;
   font-family: 'Yantramanav', sans-serif;
-  font-size: 20px;
+  font-size: clamp(16px, 2.5vw, 20px);
   font-weight: 100;
   margin: 0;
   text-align: center;
@@ -45,7 +44,8 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px; /* Space between score and button */
+  gap: 20px;
+  flex-wrap: wrap; 
 }
 
 .actions a {
@@ -73,22 +73,24 @@ p {
 #gameboard {
   position: relative;
   text-align: center;
-  top: 10px; /* Reduced top positioning */
-  min-height: 400px; /* Ensure gameboard has a minimum height */
-  max-width: none; /* Removed max-width to allow for 8 cards per row */
-  width: 1264px;
-  margin: 0 auto; /* Removed auto margin */
+  top: 10px;
+  width: 100%; /* Changed from 1264px to 100% */
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap; /* Allows cards to wrap to the next row */
+  justify-content: center;
+  gap: 8px;
 }
 
 .card {
   border: 2px solid #9DD1F1;
   display: inline-block;
-  height: 240px; /* Reverted height for 8x3 layout */
-  margin: 4px; 
+  height: clamp(80px, 15vw, 200px);
+  margin: 4px;
   text-align: center;
-  width: 150px; /* Reverted width for 8x3 layout */
-  cursor: pointer; /* Add cursor pointer to indicate interactivity */
-  perspective: 1000px; /* For 3D flip effect */
+  width: clamp(80px, 15vw, 150px);
+  cursor: pointer;
+  perspective: 1000px;
 }
 
 .card-inner {
@@ -108,7 +110,7 @@ p {
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   display: flex;
   align-items: center;
@@ -124,23 +126,23 @@ p {
 .card-back {
   color: white;
   font-family: 'Yantramanav', sans-serif;
-  font-size: 40px;
+  font-size: clamp(20px, 5vw, 40px);
   font-weight: 700;
 }
 
 .card img {
-  max-width: 100%; /* Ensure image takes full width of its container */
-  max-height: 100%; /* Ensure image takes full height of its container */
-  width: 100%; /* Explicitly set width to 100% */
-  height: 100%; /* Explicitly set height to 100% */
-  object-fit: contain; /* Maintain aspect ratio and fit within container */
-  padding: 0; 
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0;
 }
 
 .card-back img {
-  width: 100%; /* Explicitly set width to 100% */
-  height: 100%; /* Explicitly set height to 100% */
-  object-fit: cover; /* Changed to cover to ensure image fills the entire card back */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .theme-switch {
@@ -194,21 +196,20 @@ p {
 }
 
 body.dark-mode {
-  background-color: #333; /* Reverted to original dark mode background color */
-  color: #eee; /* Reverted to original dark mode text color */
-  /* Removed background-image, background-size, background-repeat, background-attachment */
+  background-color: #333;
+  color: #eee;
 }
 
 body.dark-mode h1 {
-  color: #9DD1F1; /* Reverted to original dark mode h1 color */
+  color: #9DD1F1;
 }
 
 body.dark-mode h2 {
-  color: #bbb; /* Reverted to original dark mode h2 color */
+  color: #bbb;
 }
 
 body.dark-mode p {
-  color: #ccc; /* Reverted to original dark mode p color */
+  color: #ccc;
 }
 
 body.dark-mode .actions a {
@@ -234,7 +235,7 @@ body.dark-mode .card-back {
 }
 
 body.dark-mode .popup p {
-  color: #333; /* Set a visible color for pop-up text in dark mode */
+  color: #333;
 }
 
 .popup {
@@ -269,7 +270,7 @@ body.dark-mode .popup p {
 .popup p {
   font-size: 24px;
   color: #333;
-  margin-bottom: 15px; /* Add some space below the paragraph */
+  margin-bottom: 15px;
 }
 
 .popup button {
@@ -334,4 +335,29 @@ body.dark-mode #start-page button {
 body.dark-mode #start-page button:hover {
   background-color: #004E89;
   color: #9DD1F1;
+}
+
+/* New responsive styles */
+@media (max-width: 1200px) {
+  body {
+    padding: 20px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .card {
+    width: clamp(60px, 20vw, 100px);
+    height: clamp(80px, 30vw, 150px);
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: clamp(50px, 25vw, 90px);
+    height: clamp(70px, 35vw, 130px);
+  }
 }
