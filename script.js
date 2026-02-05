@@ -14,18 +14,18 @@ const startGameBtn = document.getElementById('start-game-btn');
 
 // Example images (add more if you want)
 const images = [
-  './images/image1.png',
-  './images/image2.png',
-  './images/image3.png',
-  './images/image4.png',
-  './images/image5.png',
-  './images/image6.png',
-  './images/image7.png',
-  './images/image8.png',
-  './images/image9.png',
-  './images/image10.png',
-  './images/image11.png',
-  './images/image12.png'
+  './images/image1.webp',
+  './images/image2.webp',
+  './images/image3.webp',
+  './images/image4.webp',
+  './images/image5.webp',
+  './images/image6.webp',
+  './images/image7.webp',
+  './images/image8.webp',
+  './images/image9.webp',
+  './images/image10.webp',
+  './images/image11.webp',
+  './images/image12.webp'
 ];
 
 const numPairs = 12; // 24 cards (12 pairs)
