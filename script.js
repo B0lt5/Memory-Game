@@ -93,7 +93,7 @@ function setupBoard() {
     const cardBack = document.createElement('div');
     cardBack.classList.add('card-back');
     const cardBackImg = document.createElement('img');
-    cardBackImg.src = './images/card-back.png'; // Path to your card back image
+    cardBackImg.src = './images/card-back.webp'; // Path to your card back image
     cardBack.appendChild(cardBackImg);
 
     cardInner.appendChild(cardFront);
